@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
        //console.log(response.role);
        this.userAuth.setToken(response.token);
        this.userAuth.setRoles(response.role);
-
-       const role = response.role;
+       console.log(this.userAuth.getRoles());
+        const role = response.role;
 
        if (role === 'ADMIN'){
           this.router.navigate(['/admin']); }

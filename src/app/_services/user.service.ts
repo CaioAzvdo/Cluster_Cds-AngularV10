@@ -24,7 +24,16 @@ export class UserService {
   // tslint:disable-next-line:typedef
   public isAdmin(){
     // @ts-ignore
-    return this.userAuthService.getRoles().includes('ADMIN');
+    if (this.userAuthService.getRoles() === 'ADMIN'){
+      return true;
+    }
+
+  }public isUser(){
+    // @ts-ignore
+    if (this.userAuthService.getRoles() === 'USER'){
+      return true;
+    }
+
   }
 
 

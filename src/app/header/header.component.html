@@ -15,7 +15,9 @@
           >Admin Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/user">User Dashboard</a>
+          <a class="nav-link active" aria-current="page" routerLink="/user"
+             *ngIf="isUser()"
+          >User Dashboard</a>
         </li>
       </ul>
       <div class="buttons">
