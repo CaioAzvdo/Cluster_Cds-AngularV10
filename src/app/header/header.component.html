@@ -20,9 +20,11 @@
           >User Dashboard</a>
         </li>
       </ul>
-      <div class="buttons">
+      <div class="buttons" STYLE="display: flex; gap: 5px" >
         <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
+        <button *ngIf="isLoggedIn()" type="button" class="btn btn-success" routerLink="/registerCd">Add new Cd</button>
         <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+
       </div>
     </div>
   </div>
