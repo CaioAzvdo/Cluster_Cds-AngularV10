@@ -15,6 +15,7 @@ import {RouterModule} from "@angular/router";
 import {AuthGuard} from "./_auth/auth.guard";
 import {AuthInterceptor} from "./_auth/auth.interceptor";
 import {UserService} from "./_services/user.service";
+import { ItemListComponent } from './item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {UserService} from "./_services/user.service";
     LoginComponent,
     UserComponent,
     ForbiddenComponent,
-    HeaderComponent
+    HeaderComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,

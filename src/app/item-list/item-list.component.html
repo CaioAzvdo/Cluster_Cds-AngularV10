@@ -1,0 +1,16 @@
+<div class="container mt-1">
+  <h2>Lista de Itens</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of items">
+    <strong style="font-size: large"   >{{ item.name }}</strong>
+      <br>
+      Genre: {{ item.genre }}<br>
+      Author: {{item.author}}<br>
+      user: {{item.userLogin}}<br>
+      <div STYLE="margin-top: 10px; gap: 10px; display: flex; justify-content: center">
+      <button type="button" class="btn btn-primary" (click)="editItem(item)">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="editItem(item)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>
