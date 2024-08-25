@@ -8,7 +8,7 @@ import {UserAuthService} from "./user-auth.service";
 })
 export class ItemService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userAuthService: UserAuthService) { }
   path_to_api = 'http://localhost:8080/';
   requestHeader = new HttpHeaders({
     'No-Auth': 'True'
@@ -23,7 +23,19 @@ export class ItemService {
     const headers = new HttpHeaders({
       'Authorization': `${token}`
     });
-      return this.http.delete<any>(this.path_to_api + 'cd/delete/' + id, { headers });
+    const role: string[] = this.userAuthService.getRoles();
+    if (role.includes('ADMIN')){
+      return this.http.delete<any>(this.path_to_api + 'admin/delete/' + id, { headers });
+    }else if (role.includes('USER')){
+    return this.http.delete<any>(this.path_to_api + 'cd/delete/' + id, { headers });
+    }
+  }
+  editItemById(editData: any, token: string, itemId): Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+    return this.http.put<any>(this.path_to_api + 'cd/edit/' + itemId, editData, { headers });
+
   }
 
 }

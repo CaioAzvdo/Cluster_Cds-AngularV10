@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
     // @ts-ignore
     this.userService.loginSubmit(loginForm.value).subscribe(
       (response: any) =>
-      {//console.log(response.token);
-       //console.log(response.role);
+      {
        this.userAuth.setToken(response.token);
        this.userAuth.setRoles(response.role);
        console.log(this.userAuth.getRoles());

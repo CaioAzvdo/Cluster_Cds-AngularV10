@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../_services/item.service";
 import {UserAuthService} from "../_services/user-auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-item-list',
@@ -10,7 +11,8 @@ import {UserAuthService} from "../_services/user-auth.service";
 export class ItemListComponent implements OnInit {
 items: any[] = [];
   constructor(private itemService : ItemService,
-              private userAuthService: UserAuthService) { }
+              private userAuthService: UserAuthService,
+              private router: Router){ }
 
   ngOnInit(): void {
     this.itemService.getItems().subscribe((data) => {
@@ -23,5 +25,9 @@ items: any[] = [];
       this.items = this.items.filter(item => item.id !== id);
     });
   }
+  editItem(id: number){
+    this.router.navigate(['/item-edit', id]);
+  }
+
 
 }

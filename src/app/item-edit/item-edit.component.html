@@ -1,0 +1,18 @@
+<div class="container mt-2">
+  <h2>Edit Item</h2>
+  <form #editForm="ngForm" (ngSubmit)="editItem(editForm)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="item.name" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <input type="text" id="genre" [(ngModel)]="item.genre" name="genre" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" id="author" [(ngModel)]="item.author" name="author" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
