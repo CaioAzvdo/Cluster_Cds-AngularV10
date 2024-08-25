@@ -11,7 +11,7 @@ import {NgForm} from "@angular/forms";
 })
 export class ItemEditComponent implements OnInit {
   item: any = {};
-  token: string = '';
+  token = '';
   constructor(private itemService: ItemService,
               private userAuthService: UserAuthService,
               private route: ActivatedRoute,
@@ -25,17 +25,20 @@ export class ItemEditComponent implements OnInit {
     });
   }
   editItem(editForm: NgForm): void {
-    console.log(editForm.value);
     const itemId = this.route.snapshot.paramMap.get('id');
-    console.log(this.itemService.editItemById(editForm.value, this.token, itemId));
-    this.itemService.editItemById(editForm.value, this.token, itemId ).subscribe(
+    this.itemService.editItemById(editForm.value, this.token, itemId).subscribe(
       (response: any) => {
-        console.log(response);
-        this.router.navigate(['/item-list']);
+        const role: string[] = this.userAuthService.getRoles();
+        if (role.includes('ADMIN')){
+        this.router.navigate(['/admin']);
+        } else if (role.includes('USER')){
+          this.router.navigate(['/user']);
+        }
       },
       (error) => {
         console.log(error);
       }
     );
+
   }
 }

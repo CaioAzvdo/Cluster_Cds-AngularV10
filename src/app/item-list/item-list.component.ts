@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../_services/item.service";
 import {UserAuthService} from "../_services/user-auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../_services/user.service";
 
 @Component({
   selector: 'app-item-list',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ItemListComponent implements OnInit {
 items: any[] = [];
-  constructor(private itemService : ItemService,
+  constructor(private itemService: ItemService,
               private userAuthService: UserAuthService,
               private router: Router){ }
 
