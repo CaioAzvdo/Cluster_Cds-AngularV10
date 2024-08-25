@@ -9,7 +9,7 @@
       user: {{item.userLogin}}<br>
       <div STYLE="margin-top: 10px; gap: 7px; display: flex; justify-content: center">
       <button type="button" class="btn btn-primary" (click)="editItem(item)">Edit</button>
-      <button type="button" class="btn btn-danger" (click)="editItem(item)">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button>
       </div>
     </li>
   </ul>
