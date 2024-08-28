@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 import {ItemService} from "../_services/item.service";
 import {UserAuthService} from "../_services/user-auth.service";
-import {NgForm} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-item-edit',
-  templateUrl: './item-edit.component.html',
-  styleUrls: ['./item-edit.component.css']
+  selector: 'app-item-create',
+  templateUrl: './item-create.component.html',
+  styleUrls: ['./item-create.component.css']
 })
-export class ItemEditComponent implements OnInit {
+export class ItemCreateComponent implements OnInit {
   item: any = {};
   token = '';
   constructor(private itemService: ItemService,
@@ -19,30 +19,24 @@ export class ItemEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.userAuthService.getToken();
-    const itemId = this.route.snapshot.paramMap.get('id');
-    this.itemService.getItemById(Number(itemId)).subscribe(data => {
-      this.item = data;
-    });
   }
-  editItem(editForm: NgForm): void {
-    const itemId = this.route.snapshot.paramMap.get('id');
-    this.itemService.editItemById(editForm.value, this.token, itemId).subscribe(
+  registerItem(registerForm: NgForm): void {
+    console.log(registerForm.value);
+    console.log(this.token);
+    this.itemService.registerItem(registerForm.value, this.token).subscribe(
       (response: any) => {
         console.log(response);
-
       },
       (error) => {
         console.log(error);
-      }
-    );
+      });
     const role: string[] = this.userAuthService.getRoles();
     if (role.includes('ADMIN')){
       this.router.navigate(['/admin']);
-
     } else if (role.includes('USER')){
       this.router.navigate(['/user']);
-
     }
 
   }
+
 }

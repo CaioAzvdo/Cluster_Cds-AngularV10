@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="card text-center" style="color: red; padding: 20px">
+    <form #registerForm="ngForm" (ngSubmit)="registerItem(registerForm)">
+      <input type="text"
+             ngModel name="name" id="name"
+             placeholder="Enter the Cd's name"
+             class="form-control mb-3">
+
+      <input type="text"
+             ngModel name="author" id="author"
+             placeholder="Enter the author's name"
+             class="form-control mb-3">
+
+      <input type="text"
+             ngModel name="genre" id="genre"
+             placeholder="Enter the Cd's genre"
+             class="form-control mb-3">
+      <input type="submit"
+             value="SUBMIT"
+             class="btn btn-outline-primary form-control rounded-0">
+    </form>
+  </div>
+</div>

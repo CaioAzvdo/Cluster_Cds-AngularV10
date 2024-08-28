@@ -47,4 +47,18 @@ export class ItemService {
       return this.http.put<any>(this.path_to_api + 'cd/edit/' + itemId, editData, {headers});
       }
   }
+  registerItem(createData: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+    const role: string[] = this.userAuthService.getRoles();
+    if (role.includes('ADMIN')) {
+      return this.http.post<any>(this.path_to_api + 'admin/register', createData, {headers});
+    } else if (role.includes('USER')) {
+      return this.http.post<any>(this.path_to_api + 'cd/register', createData, {headers});
+    }
+  }
+  isOwner(itemId: number, userId: string): boolean {
+    return this.userAuthService.getUser() === userId;
+  }
 }

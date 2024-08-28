@@ -17,6 +17,7 @@ import {AuthInterceptor} from "./_auth/auth.interceptor";
 import {UserService} from "./_services/user.service";
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemEditComponent } from './item-edit/item-edit.component';
+import { ItemCreateComponent } from './item-create/item-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ItemEditComponent } from './item-edit/item-edit.component';
     ForbiddenComponent,
     HeaderComponent,
     ItemListComponent,
-    ItemEditComponent
+    ItemEditComponent,
+    ItemCreateComponent
   ],
   imports: [
     BrowserModule,

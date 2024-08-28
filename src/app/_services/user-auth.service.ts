@@ -19,6 +19,12 @@ export class UserAuthService {
   public getToken(): string{
     return localStorage.getItem('jwtToken');
   }
+  public setUser(user: string){
+    localStorage.setItem('login', user);
+  }
+  public getUser(): string{
+    return localStorage.getItem('login');
+  }
   public clear(){
     localStorage.clear();
   }

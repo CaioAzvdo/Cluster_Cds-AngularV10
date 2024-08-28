@@ -8,6 +8,7 @@ import {ForbiddenComponent} from "./forbidden/forbidden.component";
 import {AuthGuard} from "./_auth/auth.guard";
 import {ItemEditComponent} from "./item-edit/item-edit.component";
 import {ItemListComponent} from "./item-list/item-list.component";
+import {ItemCreateComponent} from "./item-create/item-create.component";
 
 const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {role: 'ADMIN'}},
@@ -16,6 +17,7 @@ const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'forbidden', component: ForbiddenComponent},
   {path: 'item_edit', component: ItemEditComponent},
   {path: 'item-list', component: ItemListComponent },
+  {path: 'item-create', component: ItemCreateComponent },
   {path: 'item-edit/:id', component: ItemEditComponent },
   //{path: '', redirectTo: '/item-list', pathMatch: 'full' }
   {path: '', redirectTo: '/home', pathMatch: 'full' }

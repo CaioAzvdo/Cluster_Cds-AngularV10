@@ -24,11 +24,14 @@ items: any[] = [];
   deleteItem(id: number){
     this.itemService.deleteItemById(id, this.userAuthService.getToken()).subscribe((data) => {
       this.items = this.items.filter(item => item.id !== id);
+      alert('Item deleted');
     });
   }
   editItem(id: number){
     this.router.navigate(['/item-edit', id]);
   }
-
+  public isLoggedIn(){
+    return this.userAuthService.isLoggedIn();
+  }
 
 }

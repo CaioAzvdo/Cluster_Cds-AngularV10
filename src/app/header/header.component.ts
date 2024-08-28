@@ -29,5 +29,8 @@ export class HeaderComponent implements OnInit {
   public isUser(){
     return this.userService.isUser();
   }
+  editItem(id: number){
+    this.router.navigate(['/item-create', id]);
+  }
 
 }
